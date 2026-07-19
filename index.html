@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TK's Insider Guides — Izmir, from someone who actually lives here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0E5C63;
+    --ink-soft: #12767F;
+    --sand: #FBF3E3;
+    --paper: #FFFBF3;
+    --terracotta: #E8452C;
+    --olive: #0E9AA7;
+    --citrus: #F5B729;
+    --line: rgba(14,92,99,0.16);
+    --max: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* signature: handwritten marginal note */
+  .note{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    color:var(--terracotta);
+    font-size:1.3rem;
+    line-height:1.2;
+    display:inline-block;
+    transform:rotate(-3deg);
+    position:relative;
+  }
+  .note::before{
+    content:'';
+    position:absolute;
+    left:-6px; right:-8px; bottom:2px; top:40%;
+    background:var(--citrus);
+    opacity:.35;
+    z-index:-1;
+    transform:rotate(-1deg);
+  }
+
+  /* nav */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(248,243,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:var(--max); margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand small{font-family:'Public Sans'; font-weight:500; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); opacity:.7;}
+  .nav-links{display:flex; gap:28px; font-size:0.95rem; font-weight:500; list-style:none; margin:0; padding:0;}
+  .nav-links a{text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s;}
+  .nav-links a:hover{border-color:var(--terracotta);}
+
+  .nav-dropdown{position:relative;}
+  .nav-dropdown > a{display:inline-flex; align-items:center; gap:5px;}
+  .chev{display:inline-block; transition:transform .2s ease; position:relative; top:1px;}
+  @media (hover:hover) and (pointer:fine){
+    .nav-dropdown:hover .chev{transform:rotate(180deg);}
+  }
+  .dropdown-menu{
+    position:absolute; top:100%; left:0; margin-top:0; padding-top:14px;
+    background:transparent;
+    min-width:170px; list-style:none; margin-left:0;
+    opacity:0; pointer-events:none; transform:translateY(-6px);
+    transition:opacity .18s ease, transform .18s ease;
+    max-height:354px; overflow-y:auto;
+  }
+  .dropdown-menu-inner{
+    background:var(--paper); border:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(16,51,62,0.12); padding:6px 0;
+    list-style:none; margin:0;
+  }
+  .dropdown-menu li{width:100%;}
+  .dropdown-menu a{
+    display:block; padding:10px 18px; font-size:0.9rem; border-bottom:none !important;
+  }
+  .dropdown-menu a:hover{background:var(--sand); color:var(--terracotta);}
+  @media (hover:hover) and (pointer:fine){
+    .nav-dropdown:hover .dropdown-menu{opacity:1; pointer-events:auto; transform:translateY(0);}
+  }
+  .nav-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+
+  @media (max-width:760px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    .nav-links.open{max-height:300px;}
+    .nav-links li{border-top:1px solid var(--line);}
+    .nav-links a{display:block; padding:16px 28px;}
+    .nav-toggle{display:block;}
+  }
+
+  /* hero */
+  .hero{
+    padding:96px 0 84px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .eyebrow{
+    font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--olive); font-weight:600; margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.02;
+    max-width:14ch;
+  }
+  .hero .accent{color:var(--terracotta); font-style:italic; font-weight:500;}
+  .hero p.lead{
+    max-width:46ch; font-size:1.15rem; margin:26px 0 36px; color:var(--ink-soft);
+  }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:2px;
+    font-weight:600; font-size:0.98rem; text-decoration:none;
+    border:1.5px solid var(--ink); transition:all .2s;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--terracotta); border-color:var(--terracotta);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .palm-motif{
+    position:absolute; right:-40px; top:-20px; width:480px; max-width:55vw; height:auto;
+    z-index:1; pointer-events:none;
+  }
+  @media (max-width:760px){.palm-motif{width:320px; max-width:70vw; top:0;}}
+
+  /* section shell */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .kicker{
+    font-family:'Caveat'; font-size:1.15rem; color:var(--terracotta); font-weight:600;
+  }
+  .divider-wrap{position:relative; height:1px; background:var(--line); margin:0;}
+  .divider-wrap svg{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:34px; height:34px; background:var(--paper); padding:0 10px;
+  }
+
+  /* about */
+  .about{background:var(--sand);}
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;
+  }
+  .about-grid h2{font-size:2.1rem; margin-bottom:22px;}
+  .about-grid p{color:var(--ink-soft); margin:0 0 16px;}
+  .credential-list{list-style:none; padding:0; margin:28px 0 0; display:grid; gap:14px;}
+  .credential-list li{
+    display:flex; gap:12px; align-items:flex-start; font-size:0.95rem;
+  }
+  .credential-list li::before{
+    content:'—'; color:var(--terracotta); font-weight:700; flex-shrink:0;
+  }
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr; gap:36px;}}
+
+  /* izmir intro */
+  .intro-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--line); border:1px solid var(--line); margin-top:8px;
+  }
+  .intro-card{
+    background:var(--paper); padding:32px 28px; position:relative;
+  }
+  .intro-card h3{font-size:1.15rem; margin-bottom:10px;}
+  .intro-card p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+  .intro-card .tag{
+    font-family:'Caveat'; color:var(--olive); font-size:1.05rem; display:block; margin-top:14px;
+  }
+  @media (max-width:760px){.intro-grid{grid-template-columns:1fr;}}
+
+  /* programs */
+  .programs{background:var(--ink); color:var(--paper);}
+  .programs .section-head .kicker{color:var(--citrus);}
+  .programs .section-head h2{color:var(--paper);}
+  .programs .section-head p{color:rgba(248,243,231,0.72);}
+  .program-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .program-card{
+    background:var(--ink-soft); border:1px solid rgba(248,243,231,0.14);
+    padding:38px 34px; border-radius:2px; display:flex; flex-direction:column;
+  }
+  .program-card .ptype{
+    font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--citrus); font-weight:700; margin-bottom:14px;
+  }
+  .program-card h3{color:var(--paper); font-size:1.5rem; margin-bottom:14px;}
+  .program-card p{color:rgba(248,243,231,0.75); margin:0 0 24px; flex-grow:1;}
+  .price{font-family:'Fraunces'; font-size:1.4rem; margin-bottom:22px; color:var(--paper);}
+  .price span{font-size:0.85rem; color:rgba(248,243,231,0.55); font-family:'Public Sans'; font-weight:500;}
+  @media (max-width:760px){.program-grid{grid-template-columns:1fr;}}
+
+  /* districts preview */
+  .districts{margin-top:52px; padding-top:48px; border-top:1px dashed rgba(248,243,231,0.2);}
+  .districts-head{display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:26px;}
+  .districts-head h3{color:var(--paper); font-size:1.3rem;}
+  .districts-head .tag-soon{
+    font-family:'Caveat'; color:var(--citrus); font-size:1.2rem; transform:rotate(-2deg); display:inline-block;
+  }
+  .district-card{
+    background:transparent; border:1.5px dashed rgba(248,243,231,0.28);
+    padding:6px 32px; border-radius:2px;
+  }
+  .dname-toggle{
+    width:100%; background:none; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0; text-align:left;
+  }
+  .dname-toggle .toggle-icon{
+    font-size:1.4rem; color:var(--citrus); font-weight:400; line-height:1;
+    transition:transform .25s ease;
+  }
+  .dname-toggle[aria-expanded="true"] .toggle-icon{transform:rotate(45deg);}
+  .district-body{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .district-body.open{max-height:3000px; padding-bottom:32px;}
+  @media (hover:hover) and (pointer:fine){
+    .district-card:hover .district-body{max-height:3000px; padding-bottom:32px;}
+    .district-card:hover .toggle-icon{transform:rotate(45deg);}
+  }
+  .district-card .dname{
+    font-family:'Fraunces'; font-size:1.3rem; color:var(--paper); margin-bottom:6px; display:block;
+  }
+  .district-card .dsub{
+    font-size:0.85rem; color:rgba(248,243,231,0.6); margin-bottom:20px; display:block;
+  }
+  .spot-list{
+    list-style:none; padding:0; margin:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:8px 24px;
+  }
+  .spot-list li{
+    font-size:0.9rem; color:rgba(248,243,231,0.8);
+    padding-left:16px; position:relative;
+  }
+  .spot-list li::before{
+    content:'·'; position:absolute; left:0; color:var(--citrus); font-weight:700;
+  }
+  @media (max-width:640px){.spot-list{grid-template-columns:1fr;}}
+  .district-card + .district-card{margin-top:24px;}
+  .light-card{border-color:var(--line);}
+  .light-card .dname{color:var(--ink);}
+  .light-card .toggle-icon{color:var(--terracotta);}
+  .light-card .district-body p{color:var(--ink-soft); font-size:0.98rem; line-height:1.7;}
+  .spot-category{margin-top:18px;}
+  .spot-category:first-of-type{margin-top:0;}
+  .cat-label{
+    font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--citrus); font-weight:700; margin-bottom:8px; display:block;
+  }
+  .spot-list-detailed{
+    list-style:none; padding:0; margin:0;
+    display:flex; flex-direction:column; gap:13px;
+  }
+  .spot-list-detailed li{
+    font-size:0.9rem; line-height:1.55; color:rgba(248,243,231,0.78);
+    padding-left:16px; position:relative;
+  }
+  .spot-list-detailed li::before{
+    content:'·'; position:absolute; left:0; color:var(--citrus); font-weight:700;
+  }
+  .spot-list-detailed li strong{
+    color:var(--paper); font-weight:700;
+  }
+
+  /* custom form */
+  .custom-form{background:var(--sand); padding:56px 0;}
+  form{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:760px;
+  }
+  form .full{grid-column:1/-1;}
+  label{display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;}
+  input, textarea, select{
+    width:100%; padding:12px 14px; border:1.5px solid var(--ink); background:var(--paper);
+    font-family:'Public Sans'; font-size:0.95rem; border-radius:2px; color:var(--ink);
+  }
+  textarea{resize:vertical; min-height:100px;}
+  form .submit-row{grid-column:1/-1; margin-top:6px;}
+  @media (max-width:640px){form{grid-template-columns:1fr;}}
+
+  /* follow */
+  .follow{text-align:center; padding:80px 0 100px;}
+  .follow h2{font-size:2rem; margin-bottom:16px;}
+  .follow p{color:var(--ink-soft); max-width:44ch; margin:0 auto 30px;}
+  .social-row{display:flex; justify-content:center; gap:18px; flex-wrap:wrap;}
+
+  footer{
+    border-top:1px solid var(--line); padding:32px 0; font-size:0.85rem; color:var(--ink-soft);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">TK's Insider Guides <small>Izmir, unfiltered</small></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#izmir">Izmir</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li class="nav-dropdown">
+        <a href="#spots">Spots <svg class="chev" viewBox="0 0 12 8" width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu">
+          <ul class="dropdown-menu-inner">
+            <li><a href="#spots" data-open-target="bornova-body">Bornova</a></li>
+            <li><a href="#spots" data-open-target="karsiyaka-body">Karşıyaka</a></li>
+            <li><a href="#spots" data-open-target="sirince-body">Şirince</a></li>
+            <li><a href="#spots" data-open-target="selcuk-body">Selçuk</a></li>
+            <li><a href="#spots" data-open-target="aliaga-body">Aliağa</a></li>
+            <li><a href="#spots" data-open-target="bergama-body">Bergama</a></li>
+            <li><a href="#spots" data-open-target="cesme-body">Çeşme</a></li>
+            <li><a href="#spots" data-open-target="dikili-body">Dikili</a></li>
+            <li><a href="#spots" data-open-target="foca-body">Foça</a></li>
+            <li><a href="#spots" data-open-target="guzelbahce-body">Güzelbahçe</a></li>
+            <li><a href="#spots" data-open-target="karaburun-body">Karaburun</a></li>
+            <li><a href="#spots" data-open-target="seferihisar-body">Seferihisar</a></li>
+            <li><a href="#spots" data-open-target="urla-body">Urla</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#custom">Custom trip</a></li>
+      <li><a href="#follow">Follow</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="palm-motif" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke-linecap="round">
+      <path d="M420 560 C415 460 405 380 395 300" stroke="var(--ink)" stroke-width="4" opacity="0.14"/>
+      <path d="M395 320 C330 290 260 275 190 280" stroke="var(--olive)" stroke-width="5" opacity="0.20"/>
+      <path d="M395 300 C340 240 300 190 270 130" stroke="var(--olive)" stroke-width="5" opacity="0.22"/>
+      <path d="M398 290 C440 235 470 175 485 105" stroke="var(--citrus)" stroke-width="5" opacity="0.24"/>
+      <path d="M400 285 C460 255 515 250 570 265" stroke="var(--terracotta)" stroke-width="5" opacity="0.22"/>
+      <path d="M397 295 C420 350 460 395 520 420" stroke="var(--citrus)" stroke-width="5" opacity="0.18"/>
+      <path d="M393 305 C370 370 380 430 420 480" stroke="var(--olive)" stroke-width="4" opacity="0.15"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">Local-made travel guides</span>
+    <h1>Izmir, the way <span class="accent">locals</span> actually see it.</h1>
+    <p class="lead">Not another copy-pasted "top 10 things to do." I was born and raised here — every guide is built from the streets I actually walk, not a listicle.</p>
+    <div class="btn-row">
+      <a href="#programs" class="btn btn-primary">See the guides</a>
+      <a href="#custom" class="btn btn-ghost">Get one made for you</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wrap">
+  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="var(--olive)" stroke-width="2.2" stroke-linecap="round">
+      <path d="M20 34 L20 18"/>
+      <path d="M20 19 C13 16 8 16 4 19"/>
+      <path d="M20 18 C15 11 12 8 8 5"/>
+      <path d="M20 17 C22 9 25 5 29 2"/>
+      <path d="M20 18 C27 15 32 15 36 18"/>
+      <path d="M20 19 C21 25 24 29 29 32"/>
+    </g>
+  </svg>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="kicker">who we are</span>
+      <h2>One person, one city, no filler.</h2>
+    </div>
+    <div>
+      <p>TK's Insider Guides is a one-person project — me, writing about the city I've lived in my entire life. No stock-photo "digital nomad" team, no outsourced content. If a spot is in a guide, I've eaten there, walked it, or waited in line for it myself.</p>
+      <p>Most travel guides are written from a hotel room after three days in town. Mine are written from Izmir, about Izmir, updated as the city actually changes.</p>
+      <ul class="credential-list">
+        <li>Lifelong resident — not a visiting writer</li>
+        <li>Guides built around neighborhoods, not just landmarks</li>
+        <li>Every recommendation personally checked, not scraped</li>
+        <li>Custom itineraries tailored to how you actually like to travel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="izmir">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">the city</span>
+      <h2>Why Izmir, and not just the postcard version</h2>
+    </div>
+    <div class="district-card light-card" style="margin-bottom:40px;">
+      <button class="dname-toggle" data-target="welcome-body" aria-expanded="false">
+        <span class="dname">Welcome to İzmir</span>
+        <span class="toggle-icon">+</span>
+      </button>
+      <div class="district-body" id="welcome-body">
+        <p>Step into İzmir, and you're stepping into 8,500 years of living history. Wrapped around a sparkling gulf on Turkey's Aegean coast, this is one of the oldest continuously inhabited cities in the entire Mediterranean — a place where ancient legend and modern life share the same sunny streets. Once known as ancient Smyrna, the city passed through the hands of Greeks, Romans, and Ottomans over the centuries, blossoming by the 16th century into one of the Mediterranean's great trading ports, where cultures from across Europe and the East mingled and thrived.</p>
+        <p style="margin-top:16px;">Today, that same spirit of openness lives on. İzmir has grown into Turkey's third-largest city, home to more than 4 million people and the country's second-busiest port after İstanbul. Proudly nicknamed the "Pearl of the Aegean," it sits just a short trip from the legendary ruins of Ephesus and Pergamon, making it the perfect gateway for history lovers. But beyond its ancient soul, İzmir is a city that truly lives in the present — vibrant seaside promenades, buzzing cafés, colorful bazaars, and a famously easygoing spirit have earned it a reputation as one of Turkey's most liberal and cosmopolitan cities. Come for the history, stay for the sunsets over the bay — İzmir has a way of making you feel right at home.</p>
+      </div>
+    </div>
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>The Kordon</h3>
+        <p>The seafront promenade is where the whole city exhales in the evening — but the good part isn't where the guidebooks point you.</p>
+        <span class="tag">insider note →</span>
+      </div>
+      <div class="intro-card">
+        <h3>Kemeraltı Bazaar</h3>
+        <p>Centuries old, still fully alive, still confusing on your first visit. I'll tell you which alleys are worth getting lost in.</p>
+        <span class="tag">insider note →</span>
+      </div>
+      <div class="intro-card">
+        <h3>Beyond the center</h3>
+        <p>Şirince's villages, Aegean coves, and day trips locals actually take on weekends — not just the Ephesus bus tour.</p>
+        <span class="tag">insider note →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">pick your path</span>
+      <h2>Two ways to get your Izmir plan</h2>
+      <p>Grab a guide today, or tell me what you're actually into and get something built for you.</p>
+    </div>
+    <div class="program-grid">
+      <div class="program-card">
+        <span class="ptype">Ready to download</span>
+        <h3>The Izmir Guide (PDF)</h3>
+        <p>A complete, insider-written itinerary — neighborhoods, food, day trips, and the things I'd actually tell a friend visiting. Instant download after purchase.</p>
+        <div class="price">$12<span> one-time · delivered on Etsy</span></div>
+        <a href="https://www.instagram.com/aegeaninsider.tk/" class="btn btn-primary" style="border-color:var(--paper); justify-content:center;">Coming next week — follow for launch</a>
+      </div>
+      <div class="program-card">
+        <span class="ptype">Made for you</span>
+        <h3>Your Custom Program</h3>
+        <p>Tell me your dates, pace, and interests — food, history, nature, nightlife — and I'll build a PDF itinerary specifically for your trip.</p>
+        <div class="price">from $25<span> fixed price · quoted after your form</span></div>
+        <a href="#custom" class="btn btn-ghost" style="border-color:var(--paper); justify-content:center;">Start your request</a>
+      </div>
+    </div>
+
+    <div class="districts" id="spots">
+      <div class="districts-head">
+        <h3>Spots</h3>
+        <span class="tag-soon">tap to see what's inside →</span>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="bornova-body" aria-expanded="false">
+          <span class="dname">Bornova</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="bornova-body">
+          <span class="dsub">A guide in the works — museums, historic mansions, and the quieter side of Izmir most visitors skip.</span>
+
+          <div class="spot-category">
+            <span class="cat-label">Müzeler</span>
+            <ul class="spot-list">
+              <li>Ege Üniversitesi Tabiat Tarihi Müzesi</li>
+              <li>Ege Üniversitesi Etnografya Müzesi</li>
+              <li>Bornova Kent Arşivi ve Müzesi (BKAM)</li>
+              <li>Arkas Deniz Tarihi Müzesi</li>
+              <li>Ege Üniversitesi Kağıt ve Kitap Sanatları Müzesi (Ballıan Köşkü)</li>
+              <li>Ege Üniversitesi Botanik Bahçesi ve Herbaryum Araştırma ve Uygulama Merkezi</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Tarihi Yerler ve Köşkler</span>
+            <ul class="spot-list">
+              <li>Yeşilova Höyüğü</li>
+              <li>Yassıtepe Höyüğü</li>
+              <li>Levanten Köşkleri (Charlton-Whittal, Giraud Evleri, La Fontaine Köşkü, Kuyulu Köşk vb.)</li>
+              <li>Bornova Tren İstasyonu</li>
+              <li>Santa Maria Katolik Kilisesi</li>
+              <li>Saint Mary Magdalene Anglikan Kilisesi</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Doğa ve Rekreasyon Alanları</span>
+            <ul class="spot-list">
+              <li>Homeros Vadisi</li>
+              <li>Aşık Veysel Rekreasyon Alanı</li>
+              <li>Bornova Atatürk Arboretumu / Büyük Park</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="karsiyaka-body" aria-expanded="false">
+          <span class="dname">Karşıyaka</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="karsiyaka-body">
+          <span class="dsub">A guide in the works — the bay-side district's museums, historic corners, parks, and everyday landmarks.</span>
+
+          <div class="spot-category">
+            <span class="cat-label">Museums</span>
+            <ul class="spot-list">
+              <li>Uşakizade Köşkü (Latife Hanım Anı Evi)</li>
+              <li>Kadına Saygı Müzesi</li>
+              <li>Hamza Rüstem Fotoğraf Evi</li>
+              <li>Haberleşme Müzesi</li>
+              <li>Karşıyaka Bilim Müzesi</li>
+              <li>İzmir Mask Müzesi</li>
+              <li>Bostanlı Güzel Sanatlar Açıkhava Müzesi</li>
+              <li>Millî Mücadele Parkı ve Müzesi</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Historical places</span>
+            <ul class="spot-list">
+              <li>Zübeyde Hanım Anıt Mezarı ve Parkı</li>
+              <li>Tarihi Alibey Hamamı</li>
+              <li>St. Helen Katolik Kilisesi</li>
+              <li>Mezaket Arabim Havrası</li>
+              <li>Levanten/Rum köşkleri (Bostanlı, Mavişehir, Yalı — Penetti Köşkü, Van Der Zee Köşkü)</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">National parks</span>
+            <ul class="spot-list">
+              <li>Karagöl Mesire Yeri</li>
+              <li>Yamanlar Dağı</li>
+              <li>Flamingo Doğa Parkı Bilgilendirme Noktası</li>
+              <li>Karşıyaka Tay Parkı</li>
+              <li>İzmir Doğal Yaşam Parkı</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Others</span>
+            <ul class="spot-list">
+              <li>Cumhuriyet Meydanı Atatürk Anıtı (1932)</li>
+              <li>Bostanlı Seyir Terası</li>
+              <li>Bostanlı Sahili</li>
+              <li>Suat Taşer Açık Hava Tiyatrosu</li>
+              <li>Karşıyaka Çarşısı</li>
+              <li>Nazım Hikmet Heykeli ve İnsan Hakları Anıtı</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="sirince-body" aria-expanded="false">
+          <span class="dname">Şirince</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="sirince-body">
+          <span class="dsub">A guide in the works — the hillside village's churches, art streets, and wine culture just outside Izmir.</span>
+
+          <div class="spot-category">
+            <span class="cat-label">Tarihi ve Dini Yapılar</span>
+            <ul class="spot-list">
+              <li>Aziz Yuhanna (St. John The Baptist) Kilisesi</li>
+              <li>Aziz Dimitros Kilisesi</li>
+              <li>Şirince Taş Mektep (Müzesi)</li>
+              <li>Tiyatro Medresesi</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Gezilecek ve Yapılacak Yerler</span>
+            <ul class="spot-list">
+              <li>Şirince Çarşısı</li>
+              <li>Nesin Matematik Köyü</li>
+              <li>Şirince Sanat Sokağı</li>
+              <li>Zeytinyağı Müzesi</li>
+              <li>Şarap Evleri</li>
+              <li>Şirince Zipline</li>
+              <li>Seyir tepeleri</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="selcuk-body" aria-expanded="false">
+          <span class="dname">Selçuk</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="selcuk-body">
+          <span class="dsub">A guide in the works — ancient Ephesus and the historic town built around it.</span>
+
+          <div class="spot-category">
+            <span class="cat-label">Antik Kentler ve Tarihi Yapılar</span>
+            <ul class="spot-list">
+              <li>Efes Antik Kenti</li>
+              <li>Artemis Tapınağı</li>
+              <li>Meryem Ana Evi</li>
+              <li>Aziz Yuhanna Bazilikası (St. John Bazilikası)</li>
+              <li>Selçuk Kalesi</li>
+              <li>Trajan Çeşmesi</li>
+              <li>İsa Bey Camii</li>
+            </ul>
+          </div>
+
+          <div class="spot-category">
+            <span class="cat-label">Müzeler</span>
+            <ul class="spot-list">
+              <li>Efes Müzesi (Ephesus Museum)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="aliaga-body" aria-expanded="false">
+          <span class="dname">Aliağa</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="aliaga-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="bergama-body" aria-expanded="false">
+          <span class="dname">Bergama</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="bergama-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="cesme-body" aria-expanded="false">
+          <span class="dname">Çeşme</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="cesme-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="dikili-body" aria-expanded="false">
+          <span class="dname">Dikili</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="dikili-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="foca-body" aria-expanded="false">
+          <span class="dname">Foça</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="foca-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="guzelbahce-body" aria-expanded="false">
+          <span class="dname">Güzelbahçe</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="guzelbahce-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="karaburun-body" aria-expanded="false">
+          <span class="dname">Karaburun</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="karaburun-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="seferihisar-body" aria-expanded="false">
+          <span class="dname">Seferihisar</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="seferihisar-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+
+      <div class="district-card">
+        <button class="dname-toggle" data-target="urla-body" aria-expanded="false">
+          <span class="dname">Urla</span>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="district-body" id="urla-body">
+          <span class="dsub">Guide coming soon.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="custom-form" id="custom">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">tell me about your trip</span>
+      <h2>Request a custom itinerary</h2>
+      <p style="color:var(--ink-soft); max-width:56ch;">Fill this out and it opens an email to me with your answers — I'll reply with a fixed price and timeline, usually within 2 days.</p>
+    </div>
+    <form id="customForm">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="dates">Travel dates</label>
+        <input type="text" id="dates" name="dates" placeholder="e.g. Sept 10–14, 2026">
+      </div>
+      <div>
+        <label for="pace">Trip pace</label>
+        <select id="pace" name="pace">
+          <option>Relaxed — a few things a day</option>
+          <option>Balanced</option>
+          <option>Packed — see everything</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="interests">What are you into? (food, history, nature, nightlife, shopping...)</label>
+        <textarea id="interests" name="interests" placeholder="Tell me what a great day of travel looks like to you"></textarea>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">Send my request</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="follow" id="follow">
+  <div class="wrap">
+    <h2>Follow along before you book</h2>
+    <p>Daily Izmir — food, neighborhoods, and honest opinions about what's actually worth your time.</p>
+    <div class="social-row">
+      <a href="https://www.instagram.com/aegeaninsider.tk/" class="btn btn-ghost">Instagram →</a>
+      <a href="mailto:aegeaninsider.tk@gmail.com" class="btn btn-ghost">Email →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 TK's Insider Guides. Made in Izmir.</span>
+    <span>aegeaninsider.tk@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.dropdown-menu a[data-open-target]').forEach(function(link){
+    link.addEventListener('click', function(){
+      const body = document.getElementById(link.getAttribute('data-open-target'));
+      if(body && !body.classList.contains('open')){
+        body.classList.add('open');
+        const btn = document.querySelector('[data-target="' + body.id + '"]');
+        if(btn){
+          btn.setAttribute('aria-expanded', 'true');
+          btn.querySelector('.toggle-icon').textContent = '×';
+        }
+      }
+    });
+  });
+    btn.addEventListener('click', function(){
+      const targetId = btn.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const isOpen = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.querySelector('.toggle-icon').textContent = isOpen ? '×' : '+';
+    });
+  });
+
+  document.getElementById('customForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const dates = document.getElementById('dates').value;
+    const pace = document.getElementById('pace').value;
+    const interests = document.getElementById('interests').value;
+
+    const subject = encodeURIComponent('Custom Izmir itinerary request from ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Travel dates: ' + dates + '\n' +
+      'Pace: ' + pace + '\n' +
+      'Interests: ' + interests
+    );
+    window.location.href = 'mailto:aegeaninsider.tk@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
