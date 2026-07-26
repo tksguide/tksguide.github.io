@@ -133,6 +133,15 @@
   .palm-motif{position:absolute; right:-40px; top:-20px; width:480px; max-width:55vw; height:auto; z-index:1; pointer-events:none;}
   @media (max-width:760px){.palm-motif{width:320px; max-width:70vw; top:0;}}
 
+  .polaroid{
+    background:var(--paper); border:1px solid var(--line);
+    padding:10px 10px 8px; box-shadow:0 10px 24px rgba(14,92,99,0.14);
+    transform:rotate(-3deg); max-width:230px; margin:0 auto 8px;
+  }
+  .polaroid img{width:100%; display:block; border-radius:1px;}
+  .polaroid figcaption{text-align:center; margin-top:10px; padding-bottom:4px;}
+  .polaroid-wrap{display:flex; justify-content:center; padding:8px 0 4px;}
+
   section{padding:88px 0;}
   .page-head{padding:64px 0 24px;}
   .section-head{max-width:640px; margin-bottom:48px;}
@@ -287,15 +296,10 @@
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">the city</span>
-      <h2>Why Izmir, and not just the postcard version</h2>
+      <h2>Welcome to İzmir</h2>
     </div>
-    <div class="district-card" style="border-style:solid;">
-      <span class="dname" style="padding-top:22px; display:block;">Welcome to İzmir</span>
-      <div class="district-body open" style="max-height:none;">
-        <p style="color:var(--ink-soft); line-height:1.7;">Step into İzmir, and you're stepping into 8,500 years of living history. Wrapped around a sparkling gulf on Turkey's Aegean coast, this is one of the oldest continuously inhabited cities in the entire Mediterranean — a place where ancient legend and modern life share the same sunny streets. Once known as ancient Smyrna, the city passed through the hands of Greeks, Romans, and Ottomans over the centuries, blossoming by the 16th century into one of the Mediterranean's great trading ports, where cultures from across Europe and the East mingled and thrived.</p>
-        <p style="margin-top:16px; color:var(--ink-soft); line-height:1.7;">Today, that same spirit of openness lives on. İzmir has grown into Turkey's third-largest city, home to more than 4 million people and the country's second-busiest port after İstanbul. Proudly nicknamed the "Pearl of the Aegean," it sits just a short trip from the legendary ruins of Ephesus and Pergamon, making it the perfect gateway for history lovers. But beyond its ancient soul, İzmir is a city that truly lives in the present — vibrant seaside promenades, buzzing cafés, colorful bazaars, and a famously easygoing spirit have earned it a reputation as one of Turkey's most liberal and cosmopolitan cities. Come for the history, stay for the sunsets over the bay — İzmir has a way of making you feel right at home.</p>
-      </div>
-    </div>
+    <p style="color:var(--ink-soft); line-height:1.7; max-width:70ch;">Step into İzmir, and you're stepping into 8,500 years of living history. Wrapped around a sparkling gulf on Turkey's Aegean coast, this is one of the oldest continuously inhabited cities in the entire Mediterranean — a place where ancient legend and modern life share the same sunny streets. Once known as ancient Smyrna, the city passed through the hands of Greeks, Romans, and Ottomans over the centuries, blossoming by the 16th century into one of the Mediterranean's great trading ports, where cultures from across Europe and the East mingled and thrived.</p>
+    <p style="margin-top:16px; color:var(--ink-soft); line-height:1.7; max-width:70ch;">Today, that same spirit of openness lives on. İzmir has grown into Turkey's third-largest city, home to more than 4 million people and the country's second-busiest port after İstanbul. Proudly nicknamed the "Pearl of the Aegean," it sits just a short trip from the legendary ruins of Ephesus and Pergamon, making it the perfect gateway for history lovers. But beyond its ancient soul, İzmir is a city that truly lives in the present — vibrant seaside promenades, buzzing cafés, colorful bazaars, and a famously easygoing spirit have earned it a reputation as one of Turkey's most liberal and cosmopolitan cities. Come for the history, stay for the sunsets over the bay — İzmir has a way of making you feel right at home.</p>
   </div>
 </section>
 <footer>
