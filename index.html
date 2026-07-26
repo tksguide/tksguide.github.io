@@ -133,6 +133,15 @@
   .palm-motif{position:absolute; right:-40px; top:-20px; width:480px; max-width:55vw; height:auto; z-index:1; pointer-events:none;}
   @media (max-width:760px){.palm-motif{width:320px; max-width:70vw; top:0;}}
 
+  .polaroid{
+    background:var(--paper); border:1px solid var(--line);
+    padding:10px 10px 8px; box-shadow:0 10px 24px rgba(14,92,99,0.14);
+    transform:rotate(-3deg); max-width:230px; margin:0 auto 8px;
+  }
+  .polaroid img{width:100%; display:block; border-radius:1px;}
+  .polaroid figcaption{text-align:center; margin-top:10px; padding-bottom:4px;}
+  .polaroid-wrap{display:flex; justify-content:center; padding:8px 0 4px;}
+
   section{padding:88px 0;}
   .page-head{padding:64px 0 24px;}
   .section-head{max-width:640px; margin-bottom:48px;}
@@ -305,6 +314,14 @@
     </div>
   </div>
 </section>
+
+<div class="polaroid-wrap">
+  <figure class="polaroid">
+    <img src="cat.jpg" alt="A street cat in İzmir">
+    <figcaption class="note">the unofficial city welcoming committee</figcaption>
+  </figure>
+</div>
+
 <div class="divider-wrap">
   <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g fill="none" stroke="var(--olive)" stroke-width="2.2" stroke-linecap="round">
